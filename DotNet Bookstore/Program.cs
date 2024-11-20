@@ -28,6 +28,11 @@ builder.Services.AddAuthentication()
     {
         options.ClientId = configuration["Authentication:Google:ClientId"];
         options.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+    })
+    .AddFacebook(options =>
+    {
+        options.AppId = configuration["Authentication:Facebook:AppId"];
+        options.AppSecret = configuration["Authentication:Facebook:AppSecret"];
     });
 // enable Sessions
 builder.Services.AddSession();
