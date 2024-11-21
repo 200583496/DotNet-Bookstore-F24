@@ -12,10 +12,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DotNet_Bookstore.Controllers
 {
-    //[Authorize]
+    [Authorize]
     // Role Based Authorization
     // Authorize admin - Administrator access only
-    [Authorize(Roles = "Administrator")]
+    // [Authorize(Roles = "Administrator")]
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,6 +26,7 @@ namespace DotNet_Bookstore.Controllers
         }
 
         // GET: Categories
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Categories.ToListAsync());

@@ -2,9 +2,11 @@
 using DotNet_Bookstore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DotNet_Bookstore.Controllers
 {
+    [Authorize]
     public class ShopController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -13,6 +15,8 @@ namespace DotNet_Bookstore.Controllers
         {
             _context = context;
         }
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             // query the list of categories in a-z order for display
